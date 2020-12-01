@@ -49,4 +49,4 @@ COPY --from=builder /usr/local/bin/molecule  /usr/local/bin/molecule
 COPY --from=builder /usr/local/bin/pytest    /usr/local/bin/pytest
 COPY --from=builder /usr/local/bin/yamllint  /usr/local/bin/yamllint
 
-CMD cd ${INPUT_MOLECULE_WORKING_DIR}; molecule ${INPUT_MOLECULE_OPTIONS} ${INPUT_MOLECULE_COMMAND} ${INPUT_MOLECULE_ARGS}
+CMD cd ${INPUT_MOLECULE_WORKING_DIR}; molecule ${INPUT_MOLECULE_OPTIONS} ${INPUT_MOLECULE_COMMAND} ${INPUT_MOLECULE_ARGS} > file.txt; echo 'output<<EOF' >> $GITHUB_ENV; cat file.txt >> $GITHUB_ENV; echo 'EOF' >> $GITHUB_ENV
