@@ -3,9 +3,6 @@
 set -x
 
 : "${GITHUB_REPOSITORY?GITHUB_REPOSITORY has to be set. Did you use the actions/checkout action?}"
-ls -la
-pwd
-cd geerlingguy.nginx
 ls -la 
 pwd
 
