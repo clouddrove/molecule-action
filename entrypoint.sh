@@ -6,4 +6,6 @@ set -x
 ls -la 
 pwd
 
+export MOLECULE_DISTRO=${INPUT_MOLECULE_ARGS}
+
 molecule ${INPUT_MOLECULE_OPTIONS} ${INPUT_MOLECULE_COMMAND} ${INPUT_MOLECULE_ARGS} > file.txt && echo 'output<<EOF' >> $GITHUB_ENV && cat file.txt >> $GITHUB_ENV && echo 'EOF' >> $GITHUB_ENV
