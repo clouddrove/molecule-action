@@ -5,7 +5,7 @@ set -x
 : "${GITHUB_REPOSITORY?GITHUB_REPOSITORY has to be set. Did you use the actions/checkout action?}"
 
 echo ${INPUT_MOLECULE_ARGS} > file2.txt
-molecule_arg="$( cut -b 16- file2.txt)"
+molecule_arg="$( cut -b 17- file2.txt)"
 
 export MOLECULE_DISTRO=$molecule_arg
 
