@@ -25,7 +25,7 @@ ARG INPUT_PIP_MODULES="\
 
 ARG MOLECULE_EXTRAS="docker"
 
-RUN apk add --update --no-cache ansible -y && pip3 install ansible molecule[docker] docker
+RUN apk add --update --no-cache ansible && pip3 install ansible molecule[docker] docker
 
 RUN apk add --update --no-cache ${BUILD_DEPS} ${PACKAGES} && \
     pip3 install ${PIP_INSTALL_ARGS} ${INPUT_PIP_MODULES} && \
