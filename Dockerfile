@@ -33,10 +33,7 @@ RUN apk add --update --no-cache ${PACKAGES} && \
 
 COPY --from=builder /usr/local/lib/python3.8/site-packages/ /usr/local/lib/python3.8/site-packages/
 COPY --from=builder /usr/local/bin/ansible*  /usr/local/bin/
-COPY --from=builder /usr/local/bin/flake8    /usr/local/bin/flake8
 COPY --from=builder /usr/local/bin/molecule  /usr/local/bin/molecule
-COPY --from=builder /usr/local/bin/pytest    /usr/local/bin/pytest
-COPY --from=builder /usr/local/bin/yamllint  /usr/local/bin/yamllint
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
