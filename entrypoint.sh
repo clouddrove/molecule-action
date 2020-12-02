@@ -8,7 +8,5 @@ echo ${INPUT_MOLECULE_ARGS} > file2.txt
 molecule_arg="$( cut -b 17- file2.txt)"
 
 export MOLECULE_DISTRO=$molecule_arg
-ls -la
-pwd
 
 molecule ${INPUT_MOLECULE_OPTIONS} ${INPUT_MOLECULE_COMMAND} > file.txt && echo 'output<<EOF' >> $GITHUB_ENV && cat file.txt >> $GITHUB_ENV && echo 'EOF' >> $GITHUB_ENV
