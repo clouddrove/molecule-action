@@ -1,14 +1,5 @@
 FROM python:3.7-alpine
 
-LABEL "maintainer"="Eugene Vasilenko <gmrnsk@gmail.com>"
-LABEL "repository"="https://github.com/gofrolist/molecule-action"
-LABEL "homepage"="https://github.com/gofrolist/molecule-action"
-
-LABEL "com.github.actions.name"="molecule"
-LABEL "com.github.actions.description"="Run Ansible Molecule"
-LABEL "com.github.actions.icon"="upload"
-LABEL "com.github.actions.color"="green"
-
 ARG BUILD_DEPS="\
     gcc \
     libc-dev \
@@ -34,8 +25,10 @@ ARG INPUT_PIP_MODULES="\
 
 ARG MOLECULE_EXTRAS="docker"
 
+RUN apt-get update && apt-get install ansible -y && pip3 install ansible molecule[docker] docker
+
 RUN apk add --update --no-cache ${BUILD_DEPS} ${PACKAGES} && \
-    pip install ${PIP_INSTALL_ARGS} ${INPUT_PIP_MODULES} "molecule[${MOLECULE_EXTRAS}]" && \
+    pip3 install ${PIP_INSTALL_ARGS} ${INPUT_PIP_MODULES} && \
     apk del --no-cache ${BUILD_DEPS} && \
     rm -rf /root/.cache
 
